@@ -113,9 +113,9 @@ impl Assignment {
 }
 
 impl Job {
-    pub fn new(config: Config) -> Self {
+    pub fn new(config: &Config) -> Self {
         Job {
-            config,
+            config: config.to_owned(),
             ..Default::default()
         }
     }

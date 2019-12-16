@@ -22,16 +22,40 @@ use rebalancer::util;
 use uuid::Uuid;
 
 static DEFAULT_CONFIG_PATH: &str = "/var/tmp/config.json";
+static DEFAULT_MAX_ASSIGNMENT_SIZE: usize = 50;
+static DEFAULT_MAX_METADATA_UPDATE_THREADS: usize = 2;
+static DEFAULT_MAX_SHARKS: usize = 5;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct Shard {
     pub host: String,
 }
 
+#[derive(Deserialize, Debug, Clone)]
+#[serde(default)]
+pub struct ConfigOptions {
+    pub max_assignment_size: usize,
+    pub max_metadata_update_threads: usize,
+    pub max_sharks: usize,
+}
+
+impl Default for ConfigOptions {
+    fn default() -> ConfigOptions {
+        ConfigOptions {
+            max_assignment_size: DEFAULT_MAX_ASSIGNMENT_SIZE,
+            max_metadata_update_threads: DEFAULT_MAX_METADATA_UPDATE_THREADS,
+            max_sharks: DEFAULT_MAX_SHARKS,
+        }
+    }
+}
+
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct Config {
     pub domain_name: String,
     pub shards: Vec<Shard>,
+    pub database_url: String,
+    #[serde(default)]
+    pub options: ConfigOptions
 }
 
 impl Config {
@@ -259,11 +283,12 @@ fn job_create_subcommand_handler(
         moray_client::get_manta_object_shark(&shark_id, &domain_name)
             .map_err(Error::from)?;
 
-    let mut job = Job::new(config);
+    let mut job = Job::new(&config);
     let job_action = JobAction::Evacuate(Box::new(EvacuateJob::new(
         from_shark,
         &domain_name,
         &job.get_id().to_string(),
+        config.options.clone(),
         max_objects,
     )));
     job.add_action(job_action);

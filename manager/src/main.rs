@@ -222,7 +222,7 @@ impl NewHandler for JobCreateHandler {
 impl Handler for JobCreateHandler {
     fn handle(self, mut state: State) -> Box<HandlerFuture> {
         info!("Post Job Request");
-        let mut job = jobs::Job::new(self.config.clone());
+        let mut job = jobs::Job::new(&self.config);
         let job_uuid = job.get_id().to_string();
 
         let f =
@@ -270,6 +270,7 @@ impl Handler for JobCreateHandler {
                         evac_payload.from_shark.clone(),
                         &domain_name,
                         &job_uuid,
+                        self.config.options.clone(),
                         max_objects,
                     )));
 
