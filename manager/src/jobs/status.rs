@@ -9,7 +9,7 @@
  */
 
 use super::evacuate::EvacuateObjectStatus;
-use crate::error::Error;
+use lib::error::Error;
 use crate::pg_db;
 
 use std::collections::HashMap;
@@ -96,7 +96,7 @@ mod tests {
     use super::*;
     use crate::jobs::evacuate::{self, EvacuateObject};
     use crate::pg_db;
-    use crate::util;
+    use lib::util;
     use quickcheck::{Arbitrary, StdThreadGen};
 
     static NUM_OBJS: u32 = 200;

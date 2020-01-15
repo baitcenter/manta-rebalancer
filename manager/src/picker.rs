@@ -8,7 +8,9 @@
  * Copyright 2019, Joyent, Inc.
  */
 
-use crate::error::Error;
+//use crate::error::Error;
+//use lib::util::{info, error, debug, trace, warn};
+use lib::error::Error;
 use quickcheck::{Arbitrary, Gen};
 use quickcheck_helpers::random::string as random_string;
 use reqwest;

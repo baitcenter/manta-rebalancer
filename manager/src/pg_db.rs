@@ -8,7 +8,7 @@
  * Copyright 2019, Joyent, Inc.
  */
 
-use crate::error::Error;
+use lib::error::Error;
 
 use diesel::pg::PgConnection;
 use diesel::prelude::*;

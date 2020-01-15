@@ -26,13 +26,17 @@ use gotham_derive::{StateData, StaticResponseExtender};
 
 use hyper::{Body, Chunk, Method};
 use joyent_rust_utils::file::calculate_md5;
+//use lib::util::{get_thread_name, log_impl, error, debug, trace, info};
+//use lib::util::{get_thread_name};//, log_impl, error, debug, trace, info};
+use lib::libagent::{Assignment, AgentAssignmentState, AgentAssignmentStats};
 use libmanta::moray::MantaObjectShark;
 
-use crate::common::{AssignmentPayload, ObjectSkippedReason, Task, TaskStatus};
+use lib::common::{AssignmentPayload, ObjectSkippedReason, Task, TaskStatus};
 
 use reqwest::StatusCode;
 use rusqlite;
-use serde_derive::{Deserialize, Serialize};
+//use serde_derive::{Deserialize, Serialize};
+use serde_derive::Deserialize;
 use threadpool::ThreadPool;
 use uuid::Uuid;
 use walkdir::WalkDir;
@@ -42,6 +46,7 @@ type Assignments = HashMap<String, Arc<RwLock<Assignment>>>;
 static REBALANCER_SCHEDULED_DIR: &str = "/var/tmp/rebalancer/scheduled";
 static REBALANCER_FINISHED_DIR: &str = "/var/tmp/rebalancer/completed";
 
+/*
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub enum AgentAssignmentState {
     Scheduled,                   // Haven't even started it yet
@@ -67,6 +72,7 @@ impl AgentAssignmentStats {
         }
     }
 }
+*/
 
 #[derive(Clone, Debug, Deserialize, StateData, StaticResponseExtender)]
 struct PathExtractor {
@@ -128,6 +134,7 @@ impl Agent {
     }
 }
 
+/*
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Assignment {
     pub uuid: String,
@@ -146,6 +153,7 @@ impl Assignment {
         }
     }
 }
+*/
 
 // Inform the work threads that of an assignment that needs to be processed.
 // Whenever a worker is available, they will receive the UUID of the assignment
@@ -844,10 +852,10 @@ fn create_dir(dirname: &str) {
 }
 
 #[cfg(test)]
-mod tests {
+pub mod tests {
     use super::*;
-    use crate::util;
-    use crate::util::test::{get_progress, send_assignment_impl};
+    use lib::util;
+    use lib::agent_test_util::{get_progress, send_assignment_impl};
     use gotham::handler::assets::FileOptions;
     use gotham::router::builder::{
         build_simple_router, DefineSingleRoute, DrawRoutes,
@@ -856,7 +864,7 @@ mod tests {
     use lazy_static::lazy_static;
     use std::{mem, thread, time};
 
-    static MANTA_SRC_DIR: &str = "test/agent/files";
+    static MANTA_SRC_DIR: &str = "testfiles";
 
     lazy_static! {
         static ref INITIALIZED: Mutex<bool> = Mutex::new(false);
