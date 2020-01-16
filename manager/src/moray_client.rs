@@ -9,7 +9,6 @@
  */
 
 use lib::error::{Error, InternalError, InternalErrorCode};
-//use lib::util::{info, error, debug, trace, warn};
 use libmanta::moray::MantaObjectShark;
 use moray::{
     client::MorayClient,

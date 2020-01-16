@@ -5,25 +5,18 @@
  */
 
 /*
- * Copyright 2019, Joyent, Inc.
+ * Copyright 2020, Joyent, Inc.
  */
 
 use std::io;
 use std::sync::Mutex;
 use std::thread;
 
-//use crate::error;
-//#[macro_use]
-//extern crate strum_macros; 
-
 use clap::{crate_name, crate_version};
-
 use slog::{o, Drain, Logger};
 
 pub static MIN_HTTP_STATUS_CODE: u16 = 100;
 pub static MAX_HTTP_STATUS_CODE: u16 = 600;
-
-//pub mod common;
 
 pub fn create_bunyan_logger<W>(io: W) -> Logger
 where
@@ -56,7 +49,6 @@ macro_rules! log_impl(
     ($lvl:expr, $($args:tt)+) => {
         let m = format!($($args)+);
         let stmt = format!("{}: {}", $crate::util::get_thread_name(), m);
-        //let stmt = format!("{}: {}", get_thread_name(), m);
         slog::slog_log!(slog_scope::logger(), $lvl, "", "{}", stmt)
     };
 );

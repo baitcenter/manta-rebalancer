@@ -5,7 +5,7 @@
  */
 
 /*
- * Copyright 2019, Joyent, Inc.
+ * Copyright 2020, Joyent, Inc.
  */
 use std::collections::{HashMap, HashSet};
 use std::ffi::OsString;
@@ -26,18 +26,13 @@ use gotham_derive::{StateData, StaticResponseExtender};
 
 use hyper::{Body, Chunk, Method};
 use joyent_rust_utils::file::calculate_md5;
-//use lib::util::{get_thread_name, log_impl, error, debug, trace, info};
-//use lib::util::{get_thread_name};//, log_impl, error, debug, trace, info};
-//use lib::libagent::{Assignment, AgentAssignmentState, AgentAssignmentStats};
 use libmanta::moray::MantaObjectShark;
 
-//use lib::common::{AssignmentPayload, ObjectSkippedReason, Task, TaskStatus};
 use crate::common::{AssignmentPayload, ObjectSkippedReason, Task, TaskStatus};
 
 use reqwest::StatusCode;
 use rusqlite;
 use serde_derive::{Deserialize, Serialize};
-//use serde_derive::Deserialize;
 use threadpool::ThreadPool;
 use uuid::Uuid;
 use walkdir::WalkDir;

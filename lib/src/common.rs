@@ -5,7 +5,7 @@
  */
 
 /*
- * Copyright 2019, Joyent, Inc.
+ * Copyright 2020, Joyent, Inc.
  */
 
 #[cfg(feature = "postgres")]
@@ -15,8 +15,6 @@ use std::io::Write;
 use std::str::FromStr;
 
 use crate::error::{Error, InternalError, InternalErrorCode};
-//use lib::{get_thread_name, log_impl, debug, trace, info};
-//use lib::{get_thread_name, log_impl, debug, trace, info};
 use libmanta::moray::MantaObjectShark;
 use md5::{Digest, Md5};
 use quickcheck::{Arbitrary, Gen};
@@ -36,9 +34,6 @@ use diesel::serialize::{self, IsNull, Output, ToSql};
 
 use diesel::sql_types;
 use strum::IntoEnumIterator;
-
-//#[macro_use]
-//extern crate strum_macros;
 
 pub type HttpStatusCode = u16;
 pub type ObjectId = String; // UUID

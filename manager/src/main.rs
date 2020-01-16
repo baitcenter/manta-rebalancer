@@ -1,3 +1,13 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+/*
+ * Copyright 2020, Joyent, Inc.
+ */
+
 #[macro_use]
 extern crate gotham_derive;
 
@@ -7,18 +17,10 @@ extern crate serde_derive;
 #[macro_use]
 extern crate lib;
 
-//use remora::{info, log_impl, util, warn};
 use lib::util;
 use std::collections::HashMap;
 use std::string::ToString;
-
-//use remora::config::{self, Config};
-//use crate::config::{/*self,*/ Config};
-//pub mod config;
 use manager::config::{self, Config};
-//use config::{Config};
-//use remora::jobs::{self, JobAction};
-//use crate::jobs::{/*self,*/ JobAction};
 use manager::jobs::{self, JobAction};
 
 use clap::{App, Arg, ArgMatches};
@@ -33,9 +35,7 @@ use gotham::router::Router;
 use gotham::state::{FromState, State};
 use hyper::{Body, Response, StatusCode};
 use libmanta::moray::MantaObjectShark;
-//use crate::jobs::evacuate::EvacuateJob;
 use manager::jobs::evacuate::EvacuateJob;
-//use crate::jobs::status::StatusError;
 use manager::jobs::status::StatusError;
 use threadpool::ThreadPool;
 use uuid::Uuid;

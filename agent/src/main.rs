@@ -5,15 +5,14 @@
  */
 
 /*
- * Copyright 2019, Joyent, Inc.
+ * Copyright 2020, Joyent, Inc.
  */
+
+//#[macro_use]
+extern crate lib;
+
 use std::env;
 
-//use remora::agent::Agent;
-//use crate::agent::Agent;
-//extern crate agent;
-//use remora::util;
-//use agent::agent::Agent;
 use lib::libagent::Agent;
 use lib::util;
 
