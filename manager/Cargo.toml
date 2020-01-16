@@ -42,3 +42,7 @@ slog-bunyan = { git = "https://github.com/slog-rs/bunyan" }
 slog-scope = "4.1.2"
 threadpool = "1.7.1"
 trust-dns-resolver = "0.11.1"
+
+[[bin]]
+name = "rebalancer-manager"
+path = "src/main.rs"

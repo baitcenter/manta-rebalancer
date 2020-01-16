@@ -1,5 +1,5 @@
 [package]
-name = "rebalancer-agent"
+name = "agent"
 version = "0.1.0"
 authors = ["Jenkins Agent <jenkins-agent@joyent.com>"]
 edition = "2018"
@@ -56,3 +56,7 @@ slog-scope = "4.1.2"
 slog-term = "2.4.1"
 crc = "1.8.1"
 unescape = "0.1.0"
+
+[[bin]]
+name = "rebalancer-agent"
+path = "src/main.rs"

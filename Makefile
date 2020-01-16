@@ -49,14 +49,17 @@ include ./deps/eng/tools/mk/Makefile.smf.defs
 #
 
 all:
-	$(CARGO) build --bin rebalancer-agent --release
-	$(CARGO) build --bin rebalancer-manager --features "postgres" --release
-	$(CARGO) build --bin rebalancer-adm --features "postgres" --release
+	$(CARGO) build --release
+
+#	$(CARGO) build --bin rebalancer-agent --release
+#	$(CARGO) build --bin rebalancer-manager --features "postgres" --release
+#	$(CARGO) build --bin rebalancer-adm --features "postgres" --release
 
 debug:
-	$(CARGO) build --bin rebalancer-agent
-	$(CARGO) build --bin rebalancer-manager --features "postgres"
-	$(CARGO) build --bin rebalancer-adm --features "postgres"
+	$(CARGO) build
+#	$(CARGO) build --bin rebalancer-agent
+#	$(CARGO) build --bin rebalancer-manager --features "postgres"
+#	$(CARGO) build --bin rebalancer-adm --features "postgres"
 	cp src/config.json target/debug/
 
 .PHONY: release
