@@ -46,3 +46,7 @@ trust-dns-resolver = "0.11.1"
 [[bin]]
 name = "rebalancer-manager"
 path = "src/main.rs"
+
+[[bin]]
+name = "rebalancer-adm"
+path = "src/rebalancer-adm.rs"
