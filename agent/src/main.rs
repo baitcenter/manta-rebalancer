@@ -8,13 +8,12 @@
  * Copyright 2020, Joyent, Inc.
  */
 
-//#[macro_use]
-extern crate lib;
+extern crate rebalancer;
 
 use std::env;
 
-use lib::libagent::Agent;
-use lib::util;
+use rebalancer::libagent::Agent;
+use rebalancer::util;
 
 fn usage() {
     util::print_version();
@@ -57,15 +56,16 @@ fn main() {
 }
 
 #[cfg(test)]
-pub mod tests {
+pub mod agenttests {
     use std::path::Path;
-    use std::sync::{mpsc, Arc, Mutex, RwLock};
+    use std::sync::Mutex;
     use joyent_rust_utils::file::calculate_md5;
     use libmanta::moray::MantaObjectShark;
-    use lib::util;
-    use lib::libagent::{Assignment, AgentAssignmentState, process_task, router};
-    use lib::agent_test_util::{get_progress, send_assignment_impl};
-    use lib::common::{Task, TaskStatus, ObjectSkippedReason};
+    use rebalancer::util;
+    use rebalancer::libagent::{Assignment, AgentAssignmentState, process_task,
+        router};
+    use rebalancer::agent_test_util::{get_progress, send_assignment_impl};
+    use rebalancer::common::{Task, TaskStatus, ObjectSkippedReason};
     use gotham::handler::assets::FileOptions;
     use gotham::router::builder::{
         build_simple_router, DefineSingleRoute, DrawRoutes,

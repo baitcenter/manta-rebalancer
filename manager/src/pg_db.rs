@@ -8,7 +8,7 @@
  * Copyright 2020, Joyent, Inc.
  */
 
-use lib::error::Error;
+use rebalancer::error::Error;
 
 use diesel::pg::PgConnection;
 use diesel::prelude::*;

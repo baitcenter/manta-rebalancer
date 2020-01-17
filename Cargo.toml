@@ -1,8 +1,8 @@
 [workspace]
 members = [
     "agent",
-    "lib",
-    "manager"
+    "manager",
+    "rebalancer"
 ]
 
 [profile.dev]

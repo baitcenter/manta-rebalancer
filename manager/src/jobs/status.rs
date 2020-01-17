@@ -5,11 +5,11 @@
  */
 
 /*
- * Copyright 2019, Joyent, Inc.
+ * Copyright 2020, Joyent, Inc.
  */
 
 use super::evacuate::EvacuateObjectStatus;
-use lib::error::Error;
+use rebalancer::error::Error;
 use crate::pg_db;
 
 use std::collections::HashMap;
@@ -96,7 +96,7 @@ mod tests {
     use super::*;
     use crate::jobs::evacuate::{self, EvacuateObject};
     use crate::pg_db;
-    use lib::util;
+    use rebalancer::util;
     use quickcheck::{Arbitrary, StdThreadGen};
 
     static NUM_OBJS: u32 = 200;

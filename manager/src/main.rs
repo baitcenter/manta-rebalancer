@@ -15,9 +15,8 @@ extern crate gotham_derive;
 extern crate serde_derive;
 
 #[macro_use]
-extern crate lib;
+extern crate rebalancer;
 
-use lib::util;
 use std::collections::HashMap;
 use std::string::ToString;
 use manager::config::{self, Config};
@@ -37,6 +36,7 @@ use hyper::{Body, Response, StatusCode};
 use libmanta::moray::MantaObjectShark;
 use manager::jobs::evacuate::EvacuateJob;
 use manager::jobs::status::StatusError;
+use rebalancer::util;
 use threadpool::ThreadPool;
 use uuid::Uuid;
 

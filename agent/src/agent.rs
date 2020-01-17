@@ -8,7 +8,7 @@
  * Copyright 2020, Joyent, Inc.
  */
 
-extern crate lib;
+extern crate rebalancer;
 
 use std::collections::{HashMap, HashSet};
 use std::ffi::OsString;
@@ -29,11 +29,11 @@ use gotham_derive::{StateData, StaticResponseExtender};
 
 use hyper::{Body, Chunk, Method};
 use joyent_rust_utils::file::calculate_md5;
-use lib::libagent::{Assignment, AgentAssignmentState, AgentAssignmentStats};
 use libmanta::moray::MantaObjectShark;
-
-use lib::common::{AssignmentPayload, ObjectSkippedReason, Task, TaskStatus};
-
+use rebalancer::libagent::{Assignment, AgentAssignmentState,
+    AgentAssignmentStats};
+use rebalancer::common::{AssignmentPayload, ObjectSkippedReason, Task,
+    TaskStatus};
 use reqwest::StatusCode;
 use rusqlite;
 use serde_derive::Deserialize;

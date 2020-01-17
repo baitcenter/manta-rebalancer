@@ -17,7 +17,7 @@ extern crate diesel;
 extern crate strum_macros;
 
 #[macro_use]
-extern crate lib;
+extern crate rebalancer;
 
 pub mod config;
 pub mod jobs;
