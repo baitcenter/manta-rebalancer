@@ -53,7 +53,7 @@ all:
 
 debug:
 	$(CARGO) build
-	cp src/config.json target/debug/
+	cp manager/src/config.json target/debug/
 
 .PHONY: release
 release: all deps/manta-scripts/.git $(SMF_MANIFESTS)
