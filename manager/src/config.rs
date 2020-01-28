@@ -55,7 +55,7 @@ pub struct Config {
     pub shards: Vec<Shard>,
     pub database_url: String,
     #[serde(default)]
-    pub options: ConfigOptions
+    pub options: ConfigOptions,
 }
 
 impl Config {
